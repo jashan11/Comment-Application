@@ -1,0 +1,69 @@
+<!DOCTYPE html>  
+  
+<html ng-app="myModule">  
+<head runat="server">  
+    <title></title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    <script type="angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+    <script type="text/javascript">  
+        var app = angular  
+            .module("myModule", [])  
+            .controller("myController", function ($scope) {  
+  
+                var technologies = [ 
+
+                   { name: " Comment... " , likes: 0, dislikes: 0 },  
+                    { name: "Comment...", likes: 0, dislikes: 0 },  
+                    
+                    { name: "Comment...", likes: 0, dislikes: 0 },  
+                    { name: "Comment...", likes: 0, dislikes: 0 },  
+                ];  
+                $scope.technologies = technologies;  
+  
+                $scope.incrementLikes = function (technology) {  
+                    technology.likes++;  
+                };  
+  
+                $scope.incrementDislikes = function (technology) {  
+                    technology.dislikes++;  
+                };  
+            });  
+    </script>  
+  
+</head>  
+<body>
+
+<div ng-app="">
+ 
+<!-- <p>Input something in the input box:</p> -->
+<p><input type="text" placeholder="Type a Comment..." ng-model="name" style="height: 70px;width: 1000px;"></p>
+{{name}}
+<br><button type="submit" style="background-color: red;border-style: outset;height: 40px;width: 150px;text-shadow: none;font: bold 25px ;">Post Comment</button>
+<!-- <p ng-bind="name"></p> -->
+
+</div>
+
+</body>
+
+<body ng-controller="myController">  
+    <form id="form1" runat="server">  
+        <div class="container">  
+             <table class="table table-bordered">  
+                <tbody>  
+                    <tr ng-repeat="technology in technologies">  
+                        <td>{{ technology.name }} </td>  
+                        <td style="text-align: center">{{ technology.likes }} </td>  
+                        <td style="text-align: center">{{ technology.dislikes }} </td>  
+                        <td>  
+                            <button type="button" class="btn btn-sm btn-success"><i class="fa fa-thumbs-up" ng-click="incrementLikes(technology)"></i></button>  
+                            <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-thumbs-down" ng-click="incrementDislikes(technology)"></i></button>  
+                        </td>  
+                    </tr>  
+                </tbody>  
+            </table>  
+        </div>  
+    </form>  
+</body>  
